@@ -1,13 +1,13 @@
-package br.com.beholder.compras.maestro.dto;
+package br.com.beholder.compras.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class RelatorioDeBuscaDTO {
 
+    private String resumo;
     private List<ProdutoEncontradoDTO> produtosAbaixoDoPrecoEsperado;
     private List<ProdutoEncontradoDTO> produtosAcimaDoPrecoEsperado;
-    private String resumo;
     private LocalDateTime inicioDaExecucao;
     private LocalDateTime fimDaExecucao;
 
