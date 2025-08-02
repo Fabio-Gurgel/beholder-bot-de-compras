@@ -1,4 +1,4 @@
-package br.com.beholder.compras.dto;
+package br.com.beholder.compras.api.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;

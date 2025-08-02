@@ -1,4 +1,4 @@
-package br.com.beholder.compras.exception;
+package br.com.beholder.compras.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;

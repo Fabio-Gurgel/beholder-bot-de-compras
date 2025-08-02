@@ -1,7 +1,7 @@
-package br.com.beholder.compras.maestro;
+package br.com.beholder.compras.api;
 
-import br.com.beholder.compras.dto.RelatorioDeBuscaDTO;
-import br.com.beholder.compras.dto.SolicitacaoDeBuscaDTO;
+import br.com.beholder.compras.api.dtos.RelatorioDeProdutosDTO;
+import br.com.beholder.compras.api.dtos.SolicitacaoDeBuscaDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/busca")
-public class MaestroController {
+public class ApiController {
 
     @Autowired
-    private MaestroService service;
+    private ApiService service;
 
     @PostMapping
-    public ResponseEntity<RelatorioDeBuscaDTO> buscar(@RequestBody @Valid SolicitacaoDeBuscaDTO solicitacao) {
+    public ResponseEntity<RelatorioDeProdutosDTO> buscar(@RequestBody @Valid SolicitacaoDeBuscaDTO solicitacao) {
         return ResponseEntity.ok(service.executarBusca(solicitacao));
     }
 }

@@ -1,4 +1,4 @@
-package br.com.beholder.compras.dto;
+package br.com.beholder.compras.api.dtos;
 
 public record ProdutoEncontradoDTO(
         String nome,
