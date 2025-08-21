@@ -30,8 +30,8 @@ public class BotVerificarPrecoDeProduto extends Bot {
         super.esperarPaginaCarregarCompletamente();
         listarProdutosEncontrados();
 
-        super.fechar();
-        return RelatorioDeProdutosFactory.montarRelatorio(produtosEncontradosDTOs);
+        browser.quit();
+        return RelatorioDeProdutosFactory.montarRelatorio(produtosEncontradosDTOs, solicitacao.precoEsperado());
     }
 
     private void acessarSiteDaAmazon() {

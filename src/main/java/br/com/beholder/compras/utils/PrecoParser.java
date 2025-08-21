@@ -1,5 +1,8 @@
 package br.com.beholder.compras.utils;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public final class PrecoParser {
 
     private PrecoParser() {
@@ -16,7 +19,10 @@ public final class PrecoParser {
                 .replace(" ", "");
 
         try {
-            return Double.parseDouble(valorLimpo);
+            double valor = Double.parseDouble(valorLimpo);
+            return BigDecimal.valueOf(valor)
+                    .setScale(2, RoundingMode.HALF_UP)
+                    .doubleValue();
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Texto de preço inválido: " + texto, e);
         }

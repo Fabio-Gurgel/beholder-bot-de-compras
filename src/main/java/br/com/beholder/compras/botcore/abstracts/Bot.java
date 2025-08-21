@@ -12,7 +12,7 @@ public abstract class Bot {
     protected WebDriver browser;
 
     public Bot(WebDriver browser) {
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver-win-64/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src\\main\\java\\br\\com\\beholder\\compras\\botcore\\drivers\\chromedriver-win64\\chromedriver.exe");
         if (browser != null) {
             this.browser = browser;
         } else {

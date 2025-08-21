@@ -7,5 +7,6 @@ public record RelatorioDeProdutosDTO(
         ProdutoEncontradoDTO produtoComMenorPreco,
         ProdutoEncontradoDTO produtoComMaiorPreco,
         double precoMedio,
-        List<ProdutoEncontradoDTO> produtos
+        List<ProdutoEncontradoDTO> produtosAbaixoDoPreco,
+        List<ProdutoEncontradoDTO> produtosAcimaDoPreco
 ){}
