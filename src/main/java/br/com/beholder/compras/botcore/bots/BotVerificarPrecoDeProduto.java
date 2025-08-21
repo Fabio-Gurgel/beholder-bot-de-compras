@@ -62,11 +62,18 @@ public class BotVerificarPrecoDeProduto extends Bot {
 
             if (precoElement.isEmpty()) return;
 
+            // nome
             String nome = NomeProdutoParser.extrairNome(nomeElement.getText());
             double preco = PrecoParser.extrairPreco(precoElement.get(0).getText());
 
-            ProdutoEncontradoDTO produtoEncontrado = new ProdutoEncontradoDTO(nome, preco);
-            produtosEncontradosDTOs.add(produtoEncontrado);
+            // link
+            WebElement a = nomeElement.findElement(By.cssSelector("a[href]"));
+            String linkParaCompra = a.getAttribute("href");
+            if (linkParaCompra != null && !linkParaCompra.startsWith("http")) {
+                linkParaCompra = "https://www.amazon.com.br" + linkParaCompra;
+            }
+
+            produtosEncontradosDTOs.add(new ProdutoEncontradoDTO(nome, preco, linkParaCompra));
         }
     }
 }
