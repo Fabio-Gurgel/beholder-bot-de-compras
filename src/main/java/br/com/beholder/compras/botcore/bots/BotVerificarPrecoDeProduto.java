@@ -5,7 +5,8 @@ import br.com.beholder.compras.botcore.abstracts.Bot;
 import br.com.beholder.compras.api.dtos.ProdutoEncontradoDTO;
 import br.com.beholder.compras.api.dtos.RelatorioDeProdutosDTO;
 import br.com.beholder.compras.api.factories.RelatorioDeProdutosFactory;
-import br.com.beholder.compras.utils.PrecoParser;
+import br.com.beholder.compras.botcore.utils.NomeProdutoParser;
+import br.com.beholder.compras.botcore.utils.PrecoParser;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -61,7 +62,7 @@ public class BotVerificarPrecoDeProduto extends Bot {
 
             if (precoElement.isEmpty()) return;
 
-            String nome = nomeElement.getText();
+            String nome = NomeProdutoParser.extrairNome(nomeElement.getText());
             double preco = PrecoParser.extrairPreco(precoElement.get(0).getText());
 
             ProdutoEncontradoDTO produtoEncontrado = new ProdutoEncontradoDTO(nome, preco);

@@ -3,7 +3,7 @@ package br.com.beholder.compras.api;
 import br.com.beholder.compras.botcore.bots.BotVerificarPrecoDeProduto;
 import br.com.beholder.compras.api.dtos.RelatorioDeProdutosDTO;
 import br.com.beholder.compras.api.dtos.SolicitacaoDeBuscaDTO;
-import br.com.beholder.compras.botcore.utils.Stopwatch;
+import br.com.beholder.compras.utils.Stopwatch;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.stereotype.Service;
 

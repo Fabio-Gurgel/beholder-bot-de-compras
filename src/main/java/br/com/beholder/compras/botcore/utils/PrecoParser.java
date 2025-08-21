@@ -1,4 +1,4 @@
-package br.com.beholder.compras.utils;
+package br.com.beholder.compras.botcore.utils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
