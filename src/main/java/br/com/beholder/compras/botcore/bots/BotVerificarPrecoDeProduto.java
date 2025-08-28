@@ -1,12 +1,11 @@
 package br.com.beholder.compras.botcore.bots;
 
-import br.com.beholder.compras.api.dtos.SolicitacaoDeBuscaDTO;
+import br.com.beholder.compras.dtos.SolicitacaoDeBuscaDTO;
 import br.com.beholder.compras.botcore.abstracts.Bot;
-import br.com.beholder.compras.api.dtos.ProdutoEncontradoDTO;
-import br.com.beholder.compras.api.dtos.RelatorioDeProdutosDTO;
-import br.com.beholder.compras.api.factories.RelatorioDeProdutosFactory;
-import br.com.beholder.compras.botcore.utils.NomeProdutoParser;
-import br.com.beholder.compras.botcore.utils.PrecoParser;
+import br.com.beholder.compras.dtos.ProdutoEncontradoDTO;
+import br.com.beholder.compras.dtos.RelatorioDeProdutosDTO;
+import br.com.beholder.compras.factories.ProdutoEncontradoDTOFactory;
+import br.com.beholder.compras.factories.RelatorioDeProdutosFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -59,21 +58,14 @@ public class BotVerificarPrecoDeProduto extends Bot {
         for (WebElement produtoWebElement : produtosElements) {
             WebElement nomeElement = produtoWebElement.findElement(By.cssSelector("[data-cy='title-recipe']"));
             List<WebElement> precoElement = produtoWebElement.findElements(By.cssSelector("[data-cy='price-recipe'] .a-price"));
+            WebElement linkElement = nomeElement.findElement(By.cssSelector("a[href]"));
 
             if (precoElement.isEmpty()) return;
-
-            // nome
-            String nome = NomeProdutoParser.extrairNome(nomeElement.getText());
-            double preco = PrecoParser.extrairPreco(precoElement.get(0).getText());
-
-            // link
-            WebElement a = nomeElement.findElement(By.cssSelector("a[href]"));
-            String linkParaCompra = a.getAttribute("href");
-            if (linkParaCompra != null && !linkParaCompra.startsWith("http")) {
-                linkParaCompra = "https://www.amazon.com.br" + linkParaCompra;
-            }
-
-            produtosEncontradosDTOs.add(new ProdutoEncontradoDTO(nome, preco, linkParaCompra));
+            produtosEncontradosDTOs.add(montarProdutoDTO(nomeElement, precoElement.get(0), linkElement));
         }
+    }
+
+    private ProdutoEncontradoDTO montarProdutoDTO(WebElement nomeElement, WebElement precoElement, WebElement linkElement) {
+        return ProdutoEncontradoDTOFactory.criar(nomeElement, precoElement, linkElement);
     }
 }

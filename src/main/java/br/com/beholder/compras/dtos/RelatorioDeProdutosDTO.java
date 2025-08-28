@@ -1,4 +1,4 @@
-package br.com.beholder.compras.api.dtos;
+package br.com.beholder.compras.dtos;
 
 import java.util.List;
 

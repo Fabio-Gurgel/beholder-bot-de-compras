@@ -1,10 +1,8 @@
-package br.com.beholder.compras.api.factories;
+package br.com.beholder.compras.factories;
 
-import br.com.beholder.compras.api.dtos.ProdutoEncontradoDTO;
-import br.com.beholder.compras.api.dtos.RelatorioDeProdutosDTO;
+import br.com.beholder.compras.dtos.ProdutoEncontradoDTO;
+import br.com.beholder.compras.dtos.RelatorioDeProdutosDTO;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
