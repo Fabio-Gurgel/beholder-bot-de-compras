@@ -1,0 +1,6 @@
+Próximas features para o projeto:
+- ✅ No relatório de busca, trazer o link de cada produto listado
+- ✅ Criar uma factory para montar dto de produto, removendo a regra de dentro do robô
+- Criar um histórico de execuções e salvar em um banco de dados
+- Gerar um email com produtos abaixo do preço esperado
+- Criar testes unitários
