@@ -3,6 +3,7 @@ package br.com.beholder.compras.dtos;
 import java.util.List;
 
 public record RelatorioDeProdutosDTO(
+        SolicitacaoDeBuscaDTO solicitacaoDeBusca,
         int totalEncontrados,
         ProdutoEncontradoDTO produtoComMenorPreco,
         ProdutoEncontradoDTO produtoComMaiorPreco,

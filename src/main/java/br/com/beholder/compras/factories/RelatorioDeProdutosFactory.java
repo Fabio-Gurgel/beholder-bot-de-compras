@@ -2,6 +2,7 @@ package br.com.beholder.compras.factories;
 
 import br.com.beholder.compras.dtos.ProdutoEncontradoDTO;
 import br.com.beholder.compras.dtos.RelatorioDeProdutosDTO;
+import br.com.beholder.compras.dtos.SolicitacaoDeBuscaDTO;
 
 import java.util.Comparator;
 import java.util.List;
@@ -11,11 +12,11 @@ import java.util.stream.Collectors;
 
 public class RelatorioDeProdutosFactory {
 
-    public static RelatorioDeProdutosDTO montarRelatorio(List<ProdutoEncontradoDTO> produtos, double precoEsperado) {
+    public static RelatorioDeProdutosDTO montarRelatorio(SolicitacaoDeBuscaDTO solicitacao, List<ProdutoEncontradoDTO> produtos, double precoEsperado) {
         Objects.requireNonNull(produtos, "A lista de produtos não pode ser nula");
 
         if (produtos.isEmpty()) {
-            return new RelatorioDeProdutosDTO(0, null, null, 0.0, List.of(), List.of());
+            return new RelatorioDeProdutosDTO(solicitacao, 0, null, null, 0.0, List.of(), List.of());
         }
 
         ProdutoEncontradoDTO produtoMenorPreco = produtos.stream()
@@ -40,6 +41,7 @@ public class RelatorioDeProdutosFactory {
         List<ProdutoEncontradoDTO> produtosAcima = particionado.get(false);
 
         return new RelatorioDeProdutosDTO(
+                solicitacao,
                 produtos.size(),
                 produtoMenorPreco,
                 produtoMaiorPreco,
