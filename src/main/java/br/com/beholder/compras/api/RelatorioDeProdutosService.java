@@ -4,21 +4,23 @@ import br.com.beholder.compras.botcore.bots.BotVerificarPrecoDeProduto;
 import br.com.beholder.compras.dtos.RelatorioDeProdutosDTO;
 import br.com.beholder.compras.dtos.SolicitacaoDeBuscaDTO;
 import br.com.beholder.compras.entities.RelatorioDeProdutosEntity;
+import br.com.beholder.compras.mappers.RelatorioDeProdutosMapper;
 import br.com.beholder.compras.utils.Stopwatch;
-import org.modelmapper.ModelMapper;
+import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ApiService {
+@RequiredArgsConstructor
+public class RelatorioDeProdutosService {
 
     private final RelatorioDeProdutosRepository repository;
-    private final ModelMapper modelMapper;
+    private final RelatorioDeProdutosMapper mapper;
 
-    public ApiService(RelatorioDeProdutosRepository repository, ModelMapper modelMapper) {
+    public RelatorioDeProdutosService(RelatorioDeProdutosRepository repository, RelatorioDeProdutosMapper mapper) {
         this.repository = repository;
-        this.modelMapper = modelMapper;
+        this.mapper = mapper;
     }
 
     public RelatorioDeProdutosDTO executarBusca(SolicitacaoDeBuscaDTO solicitacao) {
@@ -42,7 +44,7 @@ public class ApiService {
 
     @Transactional
     public void salvarRelatorioDeProdutosNoBanco(RelatorioDeProdutosDTO relatorio) {
-        RelatorioDeProdutosEntity entity = modelMapper.map(relatorio, RelatorioDeProdutosEntity.class);
+        RelatorioDeProdutosEntity entity = mapper.toEntity(relatorio);
         repository.save(entity);
     }
 }

@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/busca")
-public class ApiController {
+public class RelatorioDeProdutosController {
 
     @Autowired
-    private ApiService service;
+    private RelatorioDeProdutosService service;
 
     @PostMapping
     public ResponseEntity<RelatorioDeProdutosDTO> buscar(@RequestBody @Valid SolicitacaoDeBuscaDTO solicitacao) {
