@@ -6,13 +6,11 @@ import br.com.beholder.compras.dtos.SolicitacaoDeBuscaDTO;
 import br.com.beholder.compras.entities.RelatorioDeProdutosEntity;
 import br.com.beholder.compras.mappers.RelatorioDeProdutosMapper;
 import br.com.beholder.compras.utils.Stopwatch;
-import lombok.RequiredArgsConstructor;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@RequiredArgsConstructor
 public class RelatorioDeProdutosService {
 
     private final RelatorioDeProdutosRepository repository;

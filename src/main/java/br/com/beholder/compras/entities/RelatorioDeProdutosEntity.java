@@ -33,11 +33,11 @@ public class RelatorioDeProdutosEntity {
     @Column(nullable = false)
     private int totalEncontrados;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "produto_menor_preco_id")
     private ProdutoEncontradoEntity produtoComMenorPreco;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "produto_maior_preco_id")
     private ProdutoEncontradoEntity produtoComMaiorPreco;
 
